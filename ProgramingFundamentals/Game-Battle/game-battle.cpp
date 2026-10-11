@@ -22,32 +22,39 @@ int main(){
   char attack;
   srand(time(0));
   do{
-    cout<<"Do you want to attacck or defend?(For Yes press y)";
+    cout<<endl<<"Do you want to attacck or defend?(For Yes press y)";
     cin >> attack;
     if(attack=='y')
     {
       damage= 10+(rand()%((25-10)+1));
       health= health-damage;
       ofstream out;
-      out.open("record.txt");
-      out<<"Health Remaining"<<health;
-      out<<"Damaged dealt"<<damage;
+      out.open("record.txt", ios::app);
+      out<<"Health Remaining = "<<health<<endl;
+      out<<"Damaged dealt = "<<damage<<endl;
       out.close();
-      cout<<"Health Remaining"<<health;
-      cout<<"Damaged dealt"<<damage;
+      cout<<"Health Remaining = "<<health<<endl;
+      cout<<"Damaged dealt = "<<damage<<endl;
     }
-    else
+    else{
       cout <<endl<<"Attack blocked"<<endl;
       ofstream out2;
-      out2.open("record.txt");
-      out2<<"Health Remaining"<<health;
-      out2<<"Damaged dealt = 0";
+      out2.open("record.txt", ios::app);
+      out2<<"Health Remaining = "<<health<<endl;
+      out2<<"Damaged dealt = 0"<<endl;
       out2.close();
-      cout<<"Health Remaining"<<health;
-      cout<<"Damaged dealt = 0";
+      cout<<"Health Remaining = "<<health<<endl;
+      cout<<"Damaged dealt = 0"<<endl;
+    }
   }
   while(health>=0);
     if(health<=0)
-      cout<<"GAME OVER";
+      cout<<endl<<"GAME OVER"<<endl;
+  ifstream in;
+  in.open("record.txt");
+  string line;
+  while(getline(in, line))
+    cout<<line<<endl;
+  in.close();
   return 0;
 }
