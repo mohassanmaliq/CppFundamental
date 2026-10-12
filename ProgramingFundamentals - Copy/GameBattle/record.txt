@@ -1,2 +1,0 @@
-Health Remaining-21
-Damaged dealt = 0
