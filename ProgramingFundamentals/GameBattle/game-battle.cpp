@@ -16,6 +16,7 @@ Write a program using a loop that:
 #include<fstream>
 #include<cstdlib> //random functions
 #include<ctime>
+#include<string>
 using namespace std;
 int main(){
   int health=100, damage;

@@ -1,0 +1,2 @@
+Score = 80
+Round = 8
