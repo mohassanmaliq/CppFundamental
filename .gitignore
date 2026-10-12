@@ -1,3 +1,4 @@
 *.exe
 *.o
+hide.txt
 out
