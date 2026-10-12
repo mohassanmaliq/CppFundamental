@@ -1,6 +1,0 @@
-5
-Round = 4
-80
-Round = 8
-65
-Round = 8
