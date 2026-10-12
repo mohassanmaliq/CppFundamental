@@ -1,4 +1,5 @@
 *.exe
 *.o
 hide.txt
+hidethis.cpp
 out
