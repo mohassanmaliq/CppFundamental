@@ -1,3 +1,4 @@
+/*
 # Git commands reference
 # Every line is a comment, so nothing here runs.
 
@@ -102,3 +103,4 @@
 # git reflog                                     history of where HEAD has been
 # git reset --hard <commit-from-reflog>          go back to a commit found in reflog
 # git checkout <commit> -- <file>                restore a file from a commit
+*/
