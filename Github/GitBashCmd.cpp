@@ -82,6 +82,8 @@
 # git tag                                        list tags
 # git tag <name>                                 create a tag
 # git tag -a <name> -m "message"                 create an annotated tag
+
+
 # git push origin <name>                         push one tag
 # git push origin --tags                         push all tags
 # git tag -d <name>                              delete a local tag
