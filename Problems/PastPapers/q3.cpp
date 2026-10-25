@@ -16,26 +16,54 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int hall, tickets, price;
+    int hall, tickets, price=0;
     char seatClass;
-    cout<<"Enter Hall class (A or B): "<<endl;
+    double rate=0, total, discount;
+    cout<<"Enter hall number (1 or 2): "<<endl;
+    cin>>hall;
+    cout<<"Enter ticket class (A or B): "<<endl;
     cin>>seatClass;
     cout<<"Enter number of tickets: "<<endl;
     cin>>tickets;
     seatClass=toupper(seatClass);
+    if(tickets<=0){
+        cout<<"Wrong number of tickets entered, exiting the program"<<endl;
+        return 0;
+    }
     switch(seatClass){
         case 'A':{
-            cout<<"Hall A selected "<<endl;
+            price=1500;
             break;
         }
         case 'B':{
-            cout<<"Hall B selected "<<endl;
+            price=1200;
             break;
         }
         default:{
-            cout<<"Wrong command entered, exiting the program"<<endl;
-            break;
+            cout<<"Wrong class entered, exiting the program"<<endl;
+            return 0;
         }
     }
+    switch(hall){
+        case 1:{
+            rate=0.08;
+            break;
+        }
+        case 2:{
+            rate=0.10;
+            break;
+        }
+        default:{
+            cout<<"Wrong hall entered, exiting the program"<<endl;
+            return 0;
+        }
+    }
+    if(tickets<5){
+        rate=0;
+    }
+    total=price*tickets;
+    discount=total*rate;
+    cout<<"Discount: "<<discount<<endl;
+    cout<<"Total cost after discount: "<<total-discount<<endl;
     return 0;
 }
