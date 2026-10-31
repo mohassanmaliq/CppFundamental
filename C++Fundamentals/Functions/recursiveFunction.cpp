@@ -39,3 +39,10 @@ int main(){
     cout<<"The term in fibonacci sequence at position "<<a<< " is "<<fib(a)<<endl;
     return 0;
 }
+
+
+// Factorial of a number:
+// 6! = 6*5*4*3*2*1 = 720
+// 0! = 1 by definition
+// 1! = 1 by definition
+// n! = n * (n-1)!
