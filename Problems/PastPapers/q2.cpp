@@ -1,4 +1,4 @@
-// Q2 (25 marks)
+ // Q2 (25 marks)
 // Given an array of N integers and a target value K, apply (arrays, loop, if-else)
 // to find the index number from the array whose value is equal to the target value K.
 // Input: arr[] = {1, 5, 7, -1, 4}, K = 7
