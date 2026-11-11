@@ -17,6 +17,7 @@ int main(){
         cout<<endl;
     }
     cout<<endl;
+    cout<<"Using pointer arithmetic"<<endl;
     for(int k = 0; k < 3; k++){
         for(int l = 0; l < 3; l++){
             cout<<k<<"-"<<l<<" ";
@@ -24,6 +25,10 @@ int main(){
         cout<<endl;
     }
     cout<<endl;
-    
+    cout<<"Diagonal prints"<<endl;
+    for(int m = 0; m < 3; m++){
+        cout<<a[m][m]<<" ";
+    }
+    cout<<endl;
     return 0;
 }
