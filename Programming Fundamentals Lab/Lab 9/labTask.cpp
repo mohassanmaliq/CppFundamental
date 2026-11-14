@@ -1,16 +1,18 @@
 #include <iostream>
 using namespace std;
 int main() {
+
 //-----------------Task 1
+
     /*int map[5][5];
-    cout << "Enter treasure points (1 to 50) for the 5x5 map:" << endl;
+    cout << "Enter value (1 to 50) for the 5x5 map:" << endl;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             cout << "Cell [" << i << "][" << j << "]: ";
             cin >> map[i][j];
         }
     }
-    cout << endl << "Treasure Map:" << endl;
+    cout << endl << "Map:" << endl;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             cout << map[i][j] << "\t";
@@ -27,6 +29,7 @@ int main() {
 };
     
 //-----------------Task 2
+
     int totalTreasure = 0;
     for(int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
@@ -50,7 +53,9 @@ int main() {
     for (int i=0; i<=5;i++){
         cout<<rowcol[i]<<" - ";
     }
+
 //-----------------Task 3
+
 int maxval = map[0][0];
 int maxrow ,maxcol;
 int diagonalSum = 0;
@@ -70,6 +75,7 @@ for(int i=0; i<5;i++){
 cout<<"Sum of diagonal elements: "<<diagonalSum<<endl;
 
 //-----------------Task 4
+
  int map2[5][5] = {
         {5, 15, 20, 10, 30},
         {12, 8, 25, 40, 6},
@@ -90,8 +96,6 @@ for (int i = 0; i < 5; i++) {
     }
     cout << endl;
 }
-
-//-----------------Task 5
 
 return 0;
 }
