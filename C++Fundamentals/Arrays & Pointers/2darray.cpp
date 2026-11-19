@@ -30,5 +30,9 @@ int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         cout<<a[m][m]<<" ";
     }
     cout<<endl;
+    cout<<"Anti-Diagonal prints"<<endl;
+    for(int m = 0; m < 3; m++){
+        cout<<a[m][2-m]<<" ";
+    }
     return 0;
 }
