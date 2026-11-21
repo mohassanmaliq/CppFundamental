@@ -130,11 +130,24 @@ int main() {
 			for(int k=0;k<n;k++){
 				cout<<cscore[k]<<" ";
 			}
-			cout<<endl;
-			break;
+			cout<<endl;	
 		}
+		cout << endl << "Total passes: " << passes << endl;
+			cout << "Total comparisons: " << comparisons << endl;
+			cout << "Total swaps: " << swaps << endl << endl;
+			cout << "Rank\tID\tScore" << endl;
+			for (int k = 0; k < n; k++)
+				cout << k + 1 << "\t" << cid[k] << "\t" << cscore[k] << endl;
+		break;
 	}
 		case 3:{
+				int ascore[20];
+				int aid[20];
+				for (int i = 0; i < n; i++) {
+				aid[i] = id[i];
+				ascore[i] = score[i];
+			}
+			
 			break;
 		}
 		case 4:{
