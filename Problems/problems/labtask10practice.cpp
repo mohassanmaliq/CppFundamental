@@ -74,7 +74,7 @@ int main() {
 	//int cscore[] = { 56,67,69,87,45,87,87,90,65,34,34,68,89,74,25,52,11 ,34,45,32 };
 	int n = sizeof(id) / sizeof(id[0]);
 	do {
-		cout << "---------MENU---------" << endl;
+		cout <<endl<< "---------MENU---------" << endl;
 		cout << "Enter the option you want" << endl;
 		cout << "1. Search a score" << endl;
 		cout << "2. Show leaderboard" << endl;
@@ -147,7 +147,21 @@ int main() {
 				aid[i] = id[i];
 				ascore[i] = score[i];
 			}
-			
+			for (int i=1; i<n;i++){
+				int key = ascore[i];
+				int keyId = aid[i];
+				int j = i - 1;
+				while(j>=0 && ascore[j] > key){
+					ascore[j+1] = ascore[j];
+					aid[j+1] = aid[j];
+					j--;
+				}
+				ascore[j+1] = key;
+				aid[j+1] = keyId;
+			}
+			for(int k=0;k<n;k++){
+				cout<<ascore[k]<<" ";
+			}
 			break;
 		}
 		case 4:{
