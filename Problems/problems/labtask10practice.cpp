@@ -68,11 +68,18 @@ OPTION 6: EXIT
 using namespace std;
 int main() {
 	int opt;
+	bool ascsorted = false;
 	int id[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 	int score[] = { 56,67,69,87,45,87,87,90,65,34,34,68,89,74,25,52,11 ,34,45,32 };
 	//int cid[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 	//int cscore[] = { 56,67,69,87,45,87,87,90,65,34,34,68,89,74,25,52,11 ,34,45,32 };
 	int n = sizeof(id) / sizeof(id[0]);
+	int ascore[20];
+				int aid[20];
+				for (int i = 0; i < n; i++) {
+				aid[i] = id[i];
+				ascore[i] = score[i];
+			}
 	do {
 		cout <<endl<< "---------MENU---------" << endl;
 		cout << "Enter the option you want" << endl;
@@ -141,12 +148,7 @@ int main() {
 		break;
 	}
 		case 3:{
-				int ascore[20];
-				int aid[20];
-				for (int i = 0; i < n; i++) {
-				aid[i] = id[i];
-				ascore[i] = score[i];
-			}
+				int shifts = 0;
 			for (int i=1; i<n;i++){
 				int key = ascore[i];
 				int keyId = aid[i];
@@ -155,6 +157,7 @@ int main() {
 					ascore[j+1] = ascore[j];
 					aid[j+1] = aid[j];
 					j--;
+					shifts++;
 				}
 				ascore[j+1] = key;
 				aid[j+1] = keyId;
@@ -162,9 +165,43 @@ int main() {
 			for(int k=0;k<n;k++){
 				cout<<ascore[k]<<" ";
 			}
+			ascsorted = true;
+			cout << endl << "Total shifts: " << shifts << endl;
+			cout << "Ascending order (ID : Score):" << endl;
+			for (int k = 0; k < n; k++)
+				cout << aid[k] << " : " << ascore[k] << endl;
 			break;
 		}
 		case 4:{
+			if(!ascsorted){
+				cout<<"Scores are not sorted. Run Option 3 first."<<endl;
+				break;
+			}
+			int target, low = 0, high = n - 1, comparisons = 0;
+			bool found = false;
+			cout << "Enter the score to search : ";
+			cin >> target;
+			while (low <= high) {
+				int mid = (low + high) / 2;
+				comparisons++;
+				cout << "low = " << low << ", high = " << high << ", mid = " << mid << endl;
+				if (ascore[mid] == target) {
+					found = true;
+					cout << "Score " << target << " found at index " << mid << endl;
+					
+					break;
+				}
+				else if (ascore[mid] < target)
+					low = mid + 1;
+				else
+					high = mid - 1;
+			}
+			if (!found) {
+				cout << "Score " << target << " not found." << endl;
+				cout << "It should be inserted at index " << low << " to keep the array sorted." << endl;
+			}
+			cout << "Number of comparisons: " << comparisons << endl;
+			break;
 			break;
 		}
 		case 5: {
