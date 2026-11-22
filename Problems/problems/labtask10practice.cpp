@@ -188,7 +188,6 @@ int main() {
 				if (ascore[mid] == target) {
 					found = true;
 					cout << "Score " << target << " found at index " << mid << endl;
-					
 					break;
 				}
 				else if (ascore[mid] < target)
@@ -201,7 +200,6 @@ int main() {
 				cout << "It should be inserted at index " << low << " to keep the array sorted." << endl;
 			}
 			cout << "Number of comparisons: " << comparisons << endl;
-			break;
 			break;
 		}
 		case 5: {
