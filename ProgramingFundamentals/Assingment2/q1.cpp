@@ -4,7 +4,6 @@
 using namespace std;
 
 const int len = 10;
-
 void intDungeon(int dungeon[len][len]);
 void disDungeon(int dungeon[len][len]);
 void expoDungeon(int dungeon[len][len], int r, int c, int &score, int &health);
@@ -15,15 +14,24 @@ int main()
     srand(time(0));
     int dungeon[len][len];
     int health=100;
-    int score=0;
+    int score=0 , treasurecount=0;
+    int r,c;
     intDungeon(dungeon);
-    /*for (int i = 0; i < len; i++){
+    for (int i = 0; i < len; i++){
         for (int j = 0; j < len; j++){
             cout << dungeon[i][j] << " ";
         }
-        cout << endl;  } */
+        cout << endl;  } 
     disDungeon(dungeon);
-    //taking the values from user
+    while(health>0 && treasurecount<=4 ){
+        disDungeon(dungeon);
+        cout<<"Enter Your choice"<<endl;
+        cout<<"Row :";
+        cin>>r;
+        cout<<endl<<"Column :";
+        cin>>c;
+        expoDungeon(dungeon, r, c, score, health);
+    }
     return 0;
 }
 
