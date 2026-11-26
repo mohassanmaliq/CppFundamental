@@ -1,12 +1,18 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <string>
 using namespace std;
 
 const int len = 10;
 void intDungeon(int dungeon[len][len]);
 void disDungeon(int dungeon[len][len]);
 void expoDungeon(int dungeon[len][len], int r, int c, int &score, int &health);
+int countTreasures(int dungeon[len][len], int row, int col);
+int calculateFinalScore(int score);
+void saveScore(string name, int score);
+void showTopScores();
 
 int main()
 {
@@ -23,8 +29,10 @@ int main()
         }
         cout << endl;  } 
     disDungeon(dungeon);
-    while(health>0 && treasurecount<=4 ){
+    while(health>0 && countTreasures(dungeon, 0, 0) > 0){
         disDungeon(dungeon);
+        cout<<"Your health :"<<health<<endl;
+        cout<<"Your current Score :"<<score<<endl;
         cout<<"Enter Your choice"<<endl;
         cout<<"Row :";
         cin>>r;
@@ -32,6 +40,17 @@ int main()
         cin>>c;
         expoDungeon(dungeon, r, c, score, health);
     }
+      if (health <= 0)
+        cout << "You died." << endl;
+    else
+        cout << "You found all the treasures!" << endl;
+     int finalScore = calculateFinalScore(score);
+    cout << "Final score : " << finalScore << endl;
+    string name;
+    cout << "Enter your name (one word) : ";
+    cin >> name;
+    saveScore(name, finalScore);
+    showTopScores();
     return 0;
 }
 
@@ -109,4 +128,57 @@ void expoDungeon(int dungeon[len][len], int r, int c, int &score, int &health){
         cout<<"Already Explored Try another cell"<<endl;
         break;
     }
+}
+
+int countTreasures(int dungeon[len][len], int row, int col){
+    if (row == len)
+        return 0;
+    int nextRow = row;
+    int nextCol = col + 1;
+    if (col == len - 1){
+        nextRow = row + 1;
+        nextCol = 0;
+    }
+    if (dungeon[row][col] == 1)
+        return 1 + countTreasures(dungeon, nextRow, nextCol);
+    return countTreasures(dungeon, nextRow, nextCol);
+}
+
+int calculateFinalScore(int score){
+    return score;
+}
+
+void saveScore(string name, int score){
+    ofstream file("scores.txt", ios::app);
+    file << name << " " << score << endl;
+    file.close();
+}
+
+void showTopScores(){
+    string names[100];
+    int scores[100];
+    int n = 0;
+    ifstream file("scores.txt");
+    if (!file){
+        cout << "No scores yet." << endl;
+        return;
+    }
+    while (n < 100 && file >> names[n] >> scores[n])
+        n++;
+    file.close();
+    for (int i = 0; i < n - 1; i++){
+        for (int j = 0; j < n - 1 - i; j++){
+            if (scores[j] < scores[j + 1]){
+                int tempScore = scores[j];
+                scores[j] = scores[j + 1];
+                scores[j + 1] = tempScore;
+                string tempName = names[j];
+                names[j] = names[j + 1];
+                names[j + 1] = tempName;
+            }
+        }
+    }
+    cout << "Top 5 scores" << endl;
+    for (int i = 0; i < n && i < 5; i++)
+        cout << i + 1 << ". " << names[i] << " - " << scores[i] << endl;
 }
