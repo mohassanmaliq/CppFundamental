@@ -23,11 +23,8 @@ int main()
     int score=0 , treasurecount=0;
     int r,c;
     intDungeon(dungeon);
-    for (int i = 0; i < len; i++){
-        for (int j = 0; j < len; j++){
-            cout << dungeon[i][j] << " ";
-        }
-        cout << endl;  } 
+    void setup(map);
+    void addelements(map);
     disDungeon(dungeon);
     while(health>0 && countTreasures(dungeon, 0, 0) > 0){
         disDungeon(dungeon);
